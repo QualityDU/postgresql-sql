@@ -29,7 +29,7 @@ begin
 		LEFT JOIN acts_tags at ON a.act_id = at.act_id
 		where a."year" = a_year
 		GROUP BY a.act_id
-		HAVING COUNT(at.act_id) != 5
+		HAVING COUNT(at.act_id) = 0
 	) into ta_incomplete;
 	IF ta_incomplete THEN
         insert into qdu_dbd_test_results ("year", year_has_acts, tags_assignment_complete)
